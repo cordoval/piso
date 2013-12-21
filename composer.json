@@ -1,4 +1,7 @@
 {
+    "require" : {
+        "symfony/console" : "2.4.*"
+    },
     "require-dev": {
         "phpspec/phpspec": "*@dev",
         "behat/behat" : "*@dev"

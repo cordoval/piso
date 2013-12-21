@@ -1,0 +1,15 @@
+services:
+
+  console.application:
+    class: Symfony\Component\Console\Application
+    calls:
+      - [addCommands, [[@console.commands.list-shows]]]
+
+  console.application.tester:
+    class: Symfony\Component\Console\Tester\ApplicationTester
+    arguments: [@console.application]
+
+  console.commands.list-shows:
+    class: Cjm\ShowGrabber\Console\Command\ListCommand
+    arguments: [list-shows]
+
