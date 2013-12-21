@@ -1,6 +1,7 @@
 {
     "require-dev": {
-        "phpspec/phpspec": "*@dev"
+        "phpspec/phpspec": "*@dev",
+        "behat/behat" : "*@dev"
     },
     "config": {
          "bin-dir" : "bin"
