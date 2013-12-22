@@ -67,5 +67,4 @@ class ListCommand extends Command
     {
         $output->writeln('No configured shows');
     }
-
 }

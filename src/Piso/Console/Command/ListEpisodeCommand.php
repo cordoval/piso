@@ -31,5 +31,4 @@ class ListEpisodeCommand extends Command
         $show = $input->getArgument('show');
         $output->writeln(sprintf('Unknown show "%s"', $show));
     }
-
 }

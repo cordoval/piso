@@ -44,6 +44,5 @@ class YamlShowLister implements ShowLister
         }
 
         return [];
-
     }
 }

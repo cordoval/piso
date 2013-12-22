@@ -53,6 +53,5 @@ class YamlShowListerSpec extends ObjectBehavior
         $names = $this->getNames();
 
         $names->shouldEqual(['show 1', 'show 2']);
-
     }
 }

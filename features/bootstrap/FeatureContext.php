@@ -75,7 +75,6 @@ class FeatureContext implements ContextInterface, SnippetsFriendlyInterface
     public function iHaveAConfigurationFileContaining(PyStringNode $configString)
     {
         $this->writeConfigFile((string)$configString);
-
     }
 
     /**
