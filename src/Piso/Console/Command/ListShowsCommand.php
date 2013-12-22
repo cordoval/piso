@@ -10,7 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Cli Command responsible for listing all configured shows
  */
-class ListCommand extends Command
+class ListShowsCommand extends Command
 {
     /**
      * Lister that actually gets the list of shows

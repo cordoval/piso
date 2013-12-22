@@ -10,11 +10,11 @@ services:
     arguments: [@console.application]
 
   console.commands.list-shows:
-    class: Piso\Console\Command\ListCommand
+    class: Piso\Console\Command\ListShowsCommand
     arguments: [list-shows, @shows.show-lister]
 
   console.commands.list-episodes:
-    class: Piso\Console\Command\ListEpisodeCommand
+    class: Piso\Console\Command\ListEpisodesCommand
     arguments: [list-episodes]
 
   shows.show-lister:

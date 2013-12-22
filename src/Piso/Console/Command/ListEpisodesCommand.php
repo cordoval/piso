@@ -10,7 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Command for listing the episodes of a certain show
  */
-class ListEpisodeCommand extends Command
+class ListEpisodesCommand extends Command
 {
     /**
      * Set up the arguments
