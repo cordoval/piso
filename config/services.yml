@@ -11,14 +11,14 @@ services:
 
   console.commands.list-shows:
     class: Piso\Console\Command\ListShowsCommand
-    arguments: [list-shows, @shows.show-lister]
+    arguments: [list-shows, @shows.show-index]
 
   console.commands.list-episodes:
     class: Piso\Console\Command\ListEpisodesCommand
     arguments: [list-episodes]
 
-  shows.show-lister:
-    class: Piso\Shows\ShowLister\YamlShowLister
+  shows.show-index:
+    class: Piso\Shows\ShowIndex\YamlShowIndex
     arguments: [@util.yaml, %config.filename%]
 
   util.yaml:

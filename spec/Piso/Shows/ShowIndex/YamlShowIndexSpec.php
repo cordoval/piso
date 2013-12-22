@@ -1,14 +1,14 @@
 <?php
 
-namespace spec\Piso\Shows\ShowLister;
+namespace spec\Piso\Shows\ShowIndex;
 
-use Piso\Shows\ShowLister;
+use Piso\Shows\ShowIndex;
 
 use Piso\Util\YamlReader;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class YamlShowListerSpec extends ObjectBehavior
+class YamlShowIndexSpec extends ObjectBehavior
 {
     const EXAMPLE_PATH = '/foo/bar.yml';
 
@@ -19,7 +19,7 @@ class YamlShowListerSpec extends ObjectBehavior
 
     function it_is_a_show_lister()
     {
-        $this->shouldHaveType(ShowLister::class);
+        $this->shouldHaveType(ShowIndex::class);
     }
 
     function it_reads_reads_the_specified_config_file_from_disk(YamlReader $parser)

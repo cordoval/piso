@@ -2,7 +2,7 @@
 
 namespace Piso\Console\Command;
 
-use Piso\Shows\ShowLister;
+use Piso\Shows\ShowIndex;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -15,15 +15,15 @@ class ListShowsCommand extends Command
     /**
      * Lister that actually gets the list of shows
      *
-     * @var ShowLister
+     * @var ShowIndex
      */
     private $lister;
 
     /**
      * @param string|null $name The name of the command
-     * @param \spec\Piso\Shows\\Piso\Shows\ShowLister $lister Where to get the show names from
+     * @param \spec\Piso\Shows\\Piso\Shows\ShowIndex $lister Where to get the show names from
      */
-    public function __construct($name = null, ShowLister $lister)
+    public function __construct($name = null, ShowIndex $lister)
     {
         $this->lister  = $lister;
         parent::__construct($name);

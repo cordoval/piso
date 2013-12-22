@@ -1,14 +1,14 @@
 <?php
 
-namespace Piso\Shows\ShowLister;
+namespace Piso\Shows\ShowIndex;
 
-use Piso\Shows\ShowLister;
+use Piso\Shows\ShowIndex;
 use Piso\Util\YamlReader;
 
 /**
  * Class that can list shows based on a Yaml configuration
  */
-class YamlShowLister implements ShowLister
+class YamlShowIndex implements ShowIndex
 {
     /**
      * @var YamlReader
