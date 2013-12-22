@@ -3,7 +3,7 @@ Feature: Listing the configured shows
 
   Scenario: Listing with no configured shows
     Given I have a configuration file with no shows
-     When I run the "list-shows" command
+     When I list the shows
      Then The output should contain "No configured shows"
 
   Scenario: Listing the shows from the config file
@@ -13,6 +13,6 @@ Feature: Listing the configured shows
             Soap Opera : ~
             Police Procedural : ~
           """
-     When I run the "list-shows" command
+     When I list the shows
      Then The output should contain "Soap Opera"
       And The output should contain "Police Procedural"

@@ -62,6 +62,7 @@ class FeatureContext implements ContextInterface, SnippetsFriendlyInterface
 
     /**
      * @Given I have a configuration file with no shows
+     * @Given I do not have the show :show configured
      */
     public function iHaveAnEmptyConfigurationFile()
     {
@@ -90,12 +91,32 @@ class FeatureContext implements ContextInterface, SnippetsFriendlyInterface
     }
 
     /**
-     * @When I run the :command command
+     * @When I list the shows
      */
-    public function iRunAParticularCommand($command)
+    public function iListTheShows()
     {
-        $this->getApplicationTester()->run(['command' => $command]);
+        $this->runCommand(['command' => 'list-shows']);
     }
+
+    /**
+     * @When I list the episodes for the show :show
+     */
+    public function iListTheEpisodesForTheShow($show)
+    {
+        $this->runCommand([
+            'command' => 'list-episodes',
+            'show' => $show
+        ]);
+    }
+
+    /**
+     * @param $commandDefinition
+     */
+    private function runCommand($commandDefinition)
+    {
+        $this->getApplicationTester()->run($commandDefinition);
+    }
+
 
     /**
      * @Then The output should contain :snippet
@@ -118,5 +139,4 @@ class FeatureContext implements ContextInterface, SnippetsFriendlyInterface
             unlink($this->configFile);
         }
     }
-
 }

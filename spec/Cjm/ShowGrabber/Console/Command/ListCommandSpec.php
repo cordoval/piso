@@ -13,7 +13,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ListCommandSpec extends ObjectBehavior
 {
-    function let(InputInterface $input, OutputInterface $output, ShowLister $lister)
+    function let(ShowLister $lister)
     {
         $this->beConstructedWith('list-shows', $lister);
     }
@@ -33,7 +33,7 @@ class ListCommandSpec extends ObjectBehavior
         $output->writeln('show 2')->shouldHaveBeenCalled();
     }
 
-    function it_outputs_suitable_message_when_no_shows_are_listed($input, $output, $lister)
+    function it_outputs_suitable_message_when_no_shows_are_listed(InputInterface $input, OutputInterface $output, ShowLister $lister)
     {
         $lister->getNames()->willReturn([]);
 

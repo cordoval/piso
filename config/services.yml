@@ -3,7 +3,7 @@ services:
   console.application:
     class: Symfony\Component\Console\Application
     calls:
-      - [addCommands, [[@console.commands.list-shows]]]
+      - [addCommands, [[@console.commands.list-shows, @console.commands.list-episodes]]]
 
   console.application.tester:
     class: Symfony\Component\Console\Tester\ApplicationTester
@@ -12,6 +12,10 @@ services:
   console.commands.list-shows:
     class: Cjm\ShowGrabber\Console\Command\ListCommand
     arguments: [list-shows, @shows.show-lister]
+
+  console.commands.list-episodes:
+    class: Cjm\ShowGrabber\Console\Command\ListEpisodeCommand
+    arguments: [list-episodes]
 
   shows.show-lister:
     class: Cjm\ShowGrabber\Shows\ShowLister\YamlShowLister
@@ -23,7 +27,6 @@ services:
 
   symfony.yaml:
     class: Symfony\Component\Yaml\Parser
-
 
 parameters:
 
