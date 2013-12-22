@@ -24,11 +24,6 @@ class FeatureContext implements ContextInterface, SnippetsFriendlyInterface
     private $configFile;
 
     /**
-     * @var string Path to the config file before we overwrote
-     */
-    private $defaultConfigPath;
-
-    /**
      * @var Symfony\Component\DependencyInjection\Container
      */
     private $container;

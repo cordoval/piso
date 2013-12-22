@@ -11,4 +11,10 @@ interface ShowIndex
      * @return array String names of all the shows
      */
     public function getNames();
+
+    /**
+     * @param string $showName
+     * @return ShowConfig
+     */
+    public function getConfigForShow($showName);
 } 

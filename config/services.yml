@@ -15,11 +15,15 @@ services:
 
   console.commands.list-episodes:
     class: Piso\Console\Command\ListEpisodesCommand
-    arguments: [list-episodes]
+    arguments: [list-episodes, @shows.episode-index]
 
   shows.show-index:
     class: Piso\Shows\ShowIndex\YamlShowIndex
     arguments: [@util.yaml, %config.filename%]
+
+  shows.episode-index:
+    class: Piso\Shows\EpisodeIndex\FilesystemEpisodeIndex
+    arguments: [@shows.show-index]
 
   util.yaml:
     class: Piso\Util\YamlReader

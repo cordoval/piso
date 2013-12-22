@@ -2,8 +2,11 @@
 
 namespace Piso\Console\Command;
 
+use Piso\Exception\ConfigException;
+use Piso\Shows\EpisodeIndex;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -12,6 +15,14 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class ListEpisodesCommand extends Command
 {
+    private $episodeIndex;
+
+    public function __construct($name, EpisodeIndex $episodeIndex)
+    {
+        $this->episodeIndex = $episodeIndex;
+        parent::__construct($name);
+    }
+
     /**
      * Set up the arguments
      */
@@ -29,6 +40,12 @@ class ListEpisodesCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $show = $input->getArgument('show');
-        $output->writeln(sprintf('Unknown show "%s"', $show));
+
+        try {
+            $this->episodeIndex->getEpisodesForShow($show);
+        }
+        catch(ConfigException $e) {
+            $output->writeln(sprintf('Unknown show "%s"', $show));
+        }
     }
 }
