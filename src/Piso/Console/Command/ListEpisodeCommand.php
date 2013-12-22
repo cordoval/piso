@@ -1,6 +1,6 @@
 <?php
 
-namespace Cjm\ShowGrabber\Console\Command;
+namespace Piso\Console\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;

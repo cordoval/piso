@@ -10,19 +10,19 @@ services:
     arguments: [@console.application]
 
   console.commands.list-shows:
-    class: Cjm\ShowGrabber\Console\Command\ListCommand
+    class: Piso\Console\Command\ListCommand
     arguments: [list-shows, @shows.show-lister]
 
   console.commands.list-episodes:
-    class: Cjm\ShowGrabber\Console\Command\ListEpisodeCommand
+    class: Piso\Console\Command\ListEpisodeCommand
     arguments: [list-episodes]
 
   shows.show-lister:
-    class: Cjm\ShowGrabber\Shows\ShowLister\YamlShowLister
+    class: Piso\Shows\ShowLister\YamlShowLister
     arguments: [@util.yaml, %config.filename%]
 
   util.yaml:
-    class: Cjm\ShowGrabber\Util\YamlReader
+    class: Piso\Util\YamlReader
     arguments: [@symfony.yaml]
 
   symfony.yaml:

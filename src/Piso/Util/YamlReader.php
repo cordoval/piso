@@ -1,8 +1,8 @@
 <?php
 
-namespace Cjm\ShowGrabber\Util;
+namespace Piso\Util;
 
-use Cjm\ShowGrabber\Exception\ConfigException;
+use Piso\Exception\ConfigException;
 use Symfony\Component\Yaml\Parser;
 
 /**

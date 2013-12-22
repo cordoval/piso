@@ -1,6 +1,6 @@
 <?php
 
-namespace Cjm\ShowGrabber\Exception;
+namespace Piso\Exception;
 
 /**
  * Generic exception for config issues

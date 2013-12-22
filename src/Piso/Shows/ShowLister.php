@@ -1,6 +1,6 @@
 <?php
 
-namespace Cjm\ShowGrabber\Shows;
+namespace Piso\Shows;
 
 /**
  * Interface for objects that can generate a list of configured shows

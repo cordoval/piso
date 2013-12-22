@@ -1,9 +1,9 @@
 <?php
 
-namespace Cjm\ShowGrabber\Shows\ShowLister;
+namespace Piso\Shows\ShowLister;
 
-use Cjm\ShowGrabber\Shows\ShowLister;
-use Cjm\ShowGrabber\Util\YamlReader;
+use Piso\Shows\ShowLister;
+use Piso\Util\YamlReader;
 
 /**
  * Class that can list shows based on a Yaml configuration

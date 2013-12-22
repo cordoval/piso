@@ -1,8 +1,8 @@
 <?php
 
-namespace Cjm\ShowGrabber\Console\Command;
+namespace Piso\Console\Command;
 
-use Cjm\ShowGrabber\Shows\ShowLister;
+use Piso\Shows\ShowLister;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -21,7 +21,7 @@ class ListCommand extends Command
 
     /**
      * @param string|null $name The name of the command
-     * @param ShowLister $lister Where to get the show names from
+     * @param \spec\Piso\Shows\\Piso\Shows\ShowLister $lister Where to get the show names from
      */
     public function __construct($name = null, ShowLister $lister)
     {

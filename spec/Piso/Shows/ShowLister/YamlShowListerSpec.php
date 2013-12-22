@@ -1,10 +1,10 @@
 <?php
 
-namespace spec\Cjm\ShowGrabber\Shows\ShowLister;
+namespace spec\Piso\Shows\ShowLister;
 
-use Cjm\ShowGrabber\Shows\ShowLister;
+use Piso\Shows\ShowLister;
 
-use Cjm\ShowGrabber\Util\YamlReader;
+use Piso\Util\YamlReader;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

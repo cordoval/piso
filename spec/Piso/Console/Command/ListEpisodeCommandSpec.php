@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Cjm\ShowGrabber\Console\Command;
+namespace spec\Piso\Console\Command;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
