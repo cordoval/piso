@@ -11,5 +11,20 @@ services:
 
   console.commands.list-shows:
     class: Cjm\ShowGrabber\Console\Command\ListCommand
-    arguments: [list-shows]
+    arguments: [list-shows, @shows.show-lister]
 
+  shows.show-lister:
+    class: Cjm\ShowGrabber\Shows\ShowLister\YamlShowLister
+    arguments: [@util.yaml, %config.filename%]
+
+  util.yaml:
+    class: Cjm\ShowGrabber\Util\YamlReader
+    arguments: [@symfony.yaml]
+
+  symfony.yaml:
+    class: Symfony\Component\Yaml\Parser
+
+
+parameters:
+
+  config.filename: config.yml
