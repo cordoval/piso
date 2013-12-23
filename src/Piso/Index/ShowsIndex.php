@@ -1,20 +1,16 @@
 <?php
 
-namespace Piso\Shows;
+namespace Piso\Index;
 
 /**
  * Interface for objects that can generate a list of configured shows
  */
-interface ShowIndex
+interface ShowsIndex
 {
     /**
+     * Lists the names of all configured shows
+     *
      * @return array String names of all the shows
      */
     public function getNames();
-
-    /**
-     * @param string $showName
-     * @return ShowConfig
-     */
-    public function getConfigForShow($showName);
 } 

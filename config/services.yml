@@ -11,23 +11,27 @@ services:
 
   console.commands.list-shows:
     class: Piso\Console\Command\ListShowsCommand
-    arguments: [list-shows, @shows.show-index]
+    arguments: [list-shows, @index.shows]
 
   console.commands.list-episodes:
     class: Piso\Console\Command\ListEpisodesCommand
-    arguments: [list-episodes, @shows.episode-index]
+    arguments: [list-episodes, @index.episode]
 
-  shows.show-index:
-    class: Piso\Shows\ShowIndex\YamlShowIndex
-    arguments: [@util.yaml, %config.filename%]
+  index.shows:
+    class: Piso\Index\ShowsIndex\ConfigShowsIndex
+    arguments: [@config.shows]
 
-  shows.episode-index:
-    class: Piso\Shows\EpisodeIndex\FilesystemEpisodeIndex
-    arguments: [@shows.show-index]
+  index.episode:
+    class: Piso\Index\EpisodeIndex\FilesystemEpisodeIndex
+    arguments: [@config.shows]
 
-  util.yaml:
+  config.shows:
+    class: Piso\Config\ShowsConfig\YamlShowsConfig
+    arguments: [@configfile.yaml]
+
+  configfile.yaml:
     class: Piso\Util\YamlReader
-    arguments: [@symfony.yaml]
+    arguments: [@symfony.yaml, %config.filename%]
 
   symfony.yaml:
     class: Symfony\Component\Yaml\Parser

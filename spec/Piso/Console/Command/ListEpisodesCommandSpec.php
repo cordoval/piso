@@ -4,7 +4,7 @@ namespace spec\Piso\Console\Command;
 
 use PhpSpec\ObjectBehavior;
 use Piso\Exception\ConfigException;
-use Piso\Shows\EpisodeIndex;
+use Piso\Index\EpisodeIndex;
 use Prophecy\Argument;
 
 use Symfony\Component\Console\Command\Command;

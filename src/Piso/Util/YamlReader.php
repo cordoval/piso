@@ -12,12 +12,15 @@ class YamlReader {
 
     private $parser;
 
+    private $path;
+
     /**
      * @param Parser $parser
      */
-    public function __construct(Parser $parser)
+    public function __construct(Parser $parser, $path)
     {
         $this->parser = $parser;
+        $this->path = $path;
     }
 
     /**
@@ -26,10 +29,10 @@ class YamlReader {
      * @param $path
      * @return array
      */
-    public function parseFile($path)
+    public function parseFile()
     {
-        if (false === $yaml = @file_get_contents($path)) {
-            throw new ConfigException(sprintf('Cannot load file "%s"', $path));
+        if (false === $yaml = @file_get_contents($this->path)) {
+            throw new ConfigException(sprintf('Cannot load file "%s"', $this->path));
         }
 
         return $this->parser->parse($yaml);

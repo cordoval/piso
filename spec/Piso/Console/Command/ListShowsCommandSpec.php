@@ -2,7 +2,7 @@
 
 namespace spec\Piso\Console\Command;
 
-use Piso\Shows\ShowIndex;
+use Piso\Index\ShowsIndex;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -13,7 +13,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ListShowsCommandSpec extends ObjectBehavior
 {
-    function let(ShowIndex $lister)
+    function let(ShowsIndex $lister)
     {
         $this->beConstructedWith('list-shows', $lister);
     }
@@ -23,7 +23,7 @@ class ListShowsCommandSpec extends ObjectBehavior
         $this->shouldHaveType(Command::class);
     }
 
-    function it_should_output_list_of_show_names(InputInterface $input, OutputInterface $output, ShowIndex $lister)
+    function it_should_output_list_of_show_names(InputInterface $input, OutputInterface $output, ShowsIndex $lister)
     {
         $lister->getNames()->willReturn(['show 1', 'show 2']);
 
@@ -33,7 +33,7 @@ class ListShowsCommandSpec extends ObjectBehavior
         $output->writeln('show 2')->shouldHaveBeenCalled();
     }
 
-    function it_outputs_suitable_message_when_no_shows_are_listed(InputInterface $input, OutputInterface $output, ShowIndex $lister)
+    function it_outputs_suitable_message_when_no_shows_are_listed(InputInterface $input, OutputInterface $output, ShowsIndex $lister)
     {
         $lister->getNames()->willReturn([]);
 
