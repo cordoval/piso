@@ -5,6 +5,8 @@ use Behat\Behat\Exception\PendingException;
 use Behat\Behat\Snippet\Context\SnippetsFriendlyInterface;
 use Behat\Gherkin\Node\PyStringNode;
 
+use org\bovigo\vfs\vfsStream;
+
 use Symfony\Component\Console\Tester\ApplicationTester;
 
 /**
@@ -79,7 +81,8 @@ class FeatureContext implements ContextInterface, SnippetsFriendlyInterface
      */
     private function writeConfigFile($configString)
     {
-        $this->configFile = tempnam(sys_get_temp_dir(), 'showgrabber');
+        vfsStream::setup('configdir');
+        $this->configFile = vfsStream::url('configdir') . '/config.yml';
         file_put_contents($this->configFile, $configString);
         $this->container->setParameter('config.filename', $this->configFile);
     }
@@ -121,16 +124,6 @@ class FeatureContext implements ContextInterface, SnippetsFriendlyInterface
 
         if (false === strpos($output, $snippet)) {
             throw new Exception(sprintf('Expected text "%s" not found in output "%s"', $snippet, $output));
-        }
-    }
-
-    /**
-     * @afterScenario
-     */
-    public function cleanUpFiles()
-    {
-        if ($this->configFile && file_exists($this->configFile)) {
-            unlink($this->configFile);
         }
     }
 }

@@ -4,7 +4,9 @@
     },
     "require-dev": {
         "phpspec/phpspec": "*@dev",
-        "behat/behat" : "*@dev"
+        "behat/behat" : "*@dev",
+        "mikey179/vfsStream": "*@dev"
+
     },
     "config": {
          "bin-dir" : "bin"
