@@ -12,7 +12,7 @@ class YamlShowConfigSpec extends ObjectBehavior
 {
     function let()
     {
-        $this->beConstructedWith('Show');
+        $this->beConstructedWith('Show', '/path');
     }
 
     function it_is_a_show_config()
@@ -25,5 +25,12 @@ class YamlShowConfigSpec extends ObjectBehavior
         $name = $this->getName();
 
         $name->shouldBe('Show');
+    }
+
+    function it_returns_the_base_path_concatenated_with_the_show_name()
+    {
+        $path = $this->getLibraryPath();
+
+        $path->shouldBe('/path' . DIRECTORY_SEPARATOR . 'Show');
     }
 }

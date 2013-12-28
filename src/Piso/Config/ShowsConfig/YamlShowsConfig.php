@@ -63,8 +63,15 @@ class YamlShowsConfig implements ShowsConfig
     {
         $config = $this->reader->parseFile() ? : [];
         $showsNode = $this->getShowDefinitions($config);
+        $libraryPath = $this->getLibraryPath($config);
 
-        return $this->generateShowConfigsFromDefinitions($showsNode);
+        $showConfigs = [];
+
+        foreach ($showsNode as $name => $config) {
+            $showConfigs[$name] = new YamlShowConfig($name, $libraryPath);
+        }
+
+        return $showConfigs;
     }
 
     /**
@@ -76,6 +83,7 @@ class YamlShowsConfig implements ShowsConfig
      */
     private function getShowDefinitions($config)
     {
+
         $showsNode = array_key_exists('shows', $config) ? $config['shows'] : [];
 
         if (!is_array($showsNode)) {
@@ -86,19 +94,15 @@ class YamlShowsConfig implements ShowsConfig
     }
 
     /**
-     * Given the show definitions, instantiates a ShowConfig object for each entry
-     *
-     * @param $showsNode
-     * @return array ShowConfig objects
+     * @param array $config Complete Yaml config
+     * @return string|null The base library path
      */
-    private function generateShowConfigsFromDefinitions($showsNode)
+    private function getLibraryPath($config)
     {
-        $showConfigs = [];
-
-        foreach ($showsNode as $name => $config) {
-            $showConfigs[$name] = new YamlShowConfig($name);
+        if (array_key_exists('library', $config) && array_key_exists('path', $config['library'])) {
+            return $config['library']['path'];
         }
 
-        return $showConfigs;
+        return null;
     }
 }

@@ -31,7 +31,7 @@ class YamlReader {
      */
     public function parseFile()
     {
-        if (false === $yaml = @file_get_contents($this->path)) {
+        if (false === $yaml = file_get_contents($this->path)) {
             throw new ConfigException(sprintf('Cannot load file "%s"', $this->path));
         }
 

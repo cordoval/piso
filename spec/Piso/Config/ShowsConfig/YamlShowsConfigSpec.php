@@ -72,6 +72,22 @@ class YamlShowsConfigSpec extends ObjectBehavior
         $showConfigs[1]->shouldHaveType(YamlShowConfig::class);
     }
 
+    function it_should_give_the_show_a_base_library_path(YamlReader $reader)
+    {
+        $reader->parseFile()->willReturn([
+            'shows' => [
+                'show 1' => []
+            ],
+            'library' => [
+                'path' => '/path'
+            ]
+        ]);
+
+        $showConfigs = $this->getShowConfigs();
+
+        $showConfigs[0]->getLibraryPath()->shouldReturn('/path' . DIRECTORY_SEPARATOR . 'show 1');
+    }
+
     function it_should_throw_a_config_exception_if_asked_for_the_config_of_an_unconfigured_show(YamlReader $reader)
     {
         $reader->parseFile()->willReturn([

@@ -15,11 +15,28 @@ class YamlShowConfig implements ShowConfig
     private $name;
 
     /**
-     * @param $name Name of the show
+     * @var string The base path of the library
      */
-    public function __construct($name)
+    private $basePath;
+
+    /**
+     * @param string $name Name of the show
+     * @parah string $basePath The base library path
+     */
+    public function __construct($name, $basePath = null)
     {
         $this->name = $name;
+        $this->basePath = $basePath;
+    }
+
+    /**
+     * @return string|null The location of the show's library
+     */
+    public function getLibraryPath()
+    {
+        if ($this->basePath) {
+            return $this->basePath . DIRECTORY_SEPARATOR . $this->name;
+        }
     }
 
     /**

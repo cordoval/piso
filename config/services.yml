@@ -23,7 +23,7 @@ services:
 
   index.episode:
     class: Piso\Index\EpisodeIndex\FilesystemEpisodeIndex
-    arguments: [@config.shows]
+    arguments: [@config.shows, @util.filelister]
 
   config.shows:
     class: Piso\Config\ShowsConfig\YamlShowsConfig
@@ -35,6 +35,9 @@ services:
 
   symfony.yaml:
     class: Symfony\Component\Yaml\Parser
+
+  util.filelister:
+    class: Piso\Util\FileLister
 
 parameters:
 

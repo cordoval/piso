@@ -4,6 +4,7 @@ namespace spec\Piso\Console\Command;
 
 use PhpSpec\ObjectBehavior;
 use Piso\Exception\ConfigException;
+use Piso\Index\Episode;
 use Piso\Index\EpisodeIndex;
 use Prophecy\Argument;
 
@@ -43,5 +44,60 @@ class ListEpisodesCommandSpec extends ObjectBehavior
         $this->run($input, $output);
 
         $output->writeln('Unknown show "someshow"')->shouldHaveBeenCalled();
+    }
+
+    function it_shows_appropriate_message_when_no_episodes_exist(InputInterface $input, OutputInterface $output, EpisodeIndex $episodeIndex)
+    {
+        $episodeIndex->getEpisodesForShow(Argument::any())->willReturn([]);
+
+        $this->run($input, $output);
+
+        $output->writeln('No episodes found')->shouldHaveBeenCalled();
+    }
+
+    function it_should_output_episode_description_when_there_is_one(
+        InputInterface $input, OutputInterface $output, EpisodeIndex $episodeIndex, Episode $episode)
+    {
+        $episode->getSeason()->willReturn(3);
+        $episode->getNumber()->willReturn(2);
+
+        $episodeIndex->getEpisodesForShow(Argument::any())->willReturn([$episode]);
+
+        $this->run($input, $output);
+
+        $output->writeln('Season 3: Episode 2')->shouldHaveBeenCalled();
+    }
+
+    function it_should_output_one_line_per_season_when_episodes_are_found(
+        InputInterface $input, OutputInterface $output, EpisodeIndex $episodeIndex, Episode $episode, Episode $episode2)
+    {
+        $episode->getSeason()->willReturn(3);
+        $episode->getNumber()->willReturn(2);
+
+        $episode2->getSeason()->willReturn(4);
+        $episode2->getNumber()->willReturn(3);
+
+        $episodeIndex->getEpisodesForShow(Argument::any())->willReturn([$episode, $episode2]);
+
+        $this->run($input, $output);
+
+        $output->writeln('Season 3: Episode 2')->shouldHaveBeenCalled();
+        $output->writeln('Season 4: Episode 3')->shouldHaveBeenCalled();
+    }
+
+    function it_should_output_episodes_from_the_same_season_in_one_line(
+        InputInterface $input, OutputInterface $output, EpisodeIndex $episodeIndex, Episode $episode, Episode $episode2)
+    {
+        $episode->getSeason()->willReturn(3);
+        $episode->getNumber()->willReturn(2);
+
+        $episode2->getSeason()->willReturn(3);
+        $episode2->getNumber()->willReturn(4);
+
+        $episodeIndex->getEpisodesForShow(Argument::any())->willReturn([$episode, $episode2]);
+
+        $this->run($input, $output);
+
+        $output->writeln('Season 3: Episodes 2,4')->shouldHaveBeenCalled();
     }
 }

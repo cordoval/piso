@@ -10,6 +10,9 @@ use Piso\Index\ShowsIndex;
  */
 class ConfigShowsIndex implements ShowsIndex
 {
+    /**
+     * @var ShowsConfig
+     */
     private $showsConfig;
 
     /**
