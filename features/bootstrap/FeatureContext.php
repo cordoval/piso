@@ -68,7 +68,7 @@ class FeatureContext implements ContextInterface, SnippetsFriendlyInterface
     {
         if (!$this->applicationTester) {
             $this->writeConfigFile();
-            $this->container->get('console.application')->setAutoExit(false);
+            $this->container->compile();
             $this->applicationTester = $this->container->get('console.application.tester');
         }
 

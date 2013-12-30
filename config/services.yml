@@ -5,9 +5,14 @@ services:
     calls:
       - [addCommands, [[@console.commands.list-shows, @console.commands.list-episodes]]]
 
+  console.application.testable:
+    parent: console.application
+    calls:
+      - [setAutoExit, [false]]
+
   console.application.tester:
     class: Symfony\Component\Console\Tester\ApplicationTester
-    arguments: [@console.application]
+    arguments: [@console.application.testable]
 
   console.commands.list-shows:
     class: Piso\Console\Command\ListShowsCommand
