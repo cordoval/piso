@@ -26,5 +26,7 @@ Feature: Listing the episodes of a show
           | folder     | filename                |
           | Soap Opera | show.s02e01.awesome.mov |
           | Soap Opera | show.s02e02.cool.avi    |
+          | Soap Opera | show.s03e02.cool.avi    |
     When I list the episodes for the show "Soap Opera"
     Then The output should contain "Season 2: Episodes 1,2"
+     And The output should contain "Season 3: Episode 2"

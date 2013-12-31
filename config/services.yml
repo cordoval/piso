@@ -20,7 +20,10 @@ services:
 
   console.commands.list-episodes:
     class: Piso\Console\Command\ListEpisodesCommand
-    arguments: [list-episodes, @index.episode]
+    arguments: [list-episodes, @index.episode, @console.formatter.episode-lists]
+
+  console.formatter.episode-lists:
+    class: Piso\Console\Formatter\EpisodeListFormatter\Simple
 
   index.shows:
     class: Piso\Index\ShowsIndex\ConfigShowsIndex
