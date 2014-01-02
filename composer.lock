@@ -66,16 +66,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Behat.git",
-                "reference": "7d570d145c82ec5d025cb242dcb5cecf604ebec7"
+                "reference": "1df38945574741b5aff3248288ebc78e3ac7922d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Behat/zipball/7d570d145c82ec5d025cb242dcb5cecf604ebec7",
-                "reference": "7d570d145c82ec5d025cb242dcb5cecf604ebec7",
+                "url": "https://api.github.com/repos/Behat/Behat/zipball/1df38945574741b5aff3248288ebc78e3ac7922d",
+                "reference": "1df38945574741b5aff3248288ebc78e3ac7922d",
                 "shasum": ""
             },
             "require": {
-                "behat/gherkin": "~3.0.3",
+                "behat/gherkin": "~3.1.2",
                 "php": ">=5.3.3",
                 "symfony/class-loader": "~2.1",
                 "symfony/config": "~2.1",
@@ -87,7 +87,8 @@
                 "symfony/yaml": "~2.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "~3.7.24"
+                "phpunit/phpunit": "~3.7.28",
+                "symfony/process": "~2.1"
             },
             "suggest": {
                 "behat/mink-extension": "for integration with Mink testing framework",
@@ -105,7 +106,9 @@
             },
             "autoload": {
                 "psr-0": {
-                    "Behat\\Behat": "src/"
+                    "Behat\\Behat": "src/",
+                    "Behat\\Testwork": "src/",
+                    "Behat\\Transliterator": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -126,20 +129,20 @@
                 "Behat",
                 "Symfony2"
             ],
-            "time": "2013-11-24 10:59:11"
+            "time": "2014-01-02 13:01:06"
         },
         {
             "name": "behat/gherkin",
-            "version": "v3.0.3",
+            "version": "v3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Gherkin.git",
-                "reference": "cbc0a34d195bec76eb2b5fb4fad8b9ee524727d4"
+                "reference": "734dc96513b875aec1e9d50c1c6ad40011bac2b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/cbc0a34d195bec76eb2b5fb4fad8b9ee524727d4",
-                "reference": "cbc0a34d195bec76eb2b5fb4fad8b9ee524727d4",
+                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/734dc96513b875aec1e9d50c1c6ad40011bac2b6",
+                "reference": "734dc96513b875aec1e9d50c1c6ad40011bac2b6",
                 "shasum": ""
             },
             "require": {
@@ -147,6 +150,7 @@
                 "symfony/finder": "~2.0"
             },
             "require-dev": {
+                "phpunit/phpunit": "~3.7.24",
                 "symfony/config": "~2.1",
                 "symfony/yaml": "~2.1"
             },
@@ -186,7 +190,7 @@
                 "gherkin",
                 "parser"
             ],
-            "time": "2013-09-15 20:23:37"
+            "time": "2014-01-01 14:20:16"
         },
         {
             "name": "mikey179/vfsStream",
@@ -265,18 +269,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/phpspec.git",
-                "reference": "39624e966b8cfdfb5c6e7213e04328327699b7eb"
+                "reference": "408670415f422c7bfbfb54d9715ec6f33c4b986d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/39624e966b8cfdfb5c6e7213e04328327699b7eb",
-                "reference": "39624e966b8cfdfb5c6e7213e04328327699b7eb",
+                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/408670415f422c7bfbfb54d9715ec6f33c4b986d",
+                "reference": "408670415f422c7bfbfb54d9715ec6f33c4b986d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
                 "phpspec/php-diff": "~1.0.0",
-                "phpspec/prophecy": "~1.0.2",
+                "phpspec/prophecy": "~1.1",
                 "symfony/console": "~2.1",
                 "symfony/event-dispatcher": "~2.1",
                 "symfony/finder": "~2.1",
@@ -325,20 +329,20 @@
                 "testing",
                 "tests"
             ],
-            "time": "2013-12-13 15:32:32"
+            "time": "2014-01-01 21:52:53"
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.0.4",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "79d9c8bd94801bffbf9b56964f6438762da6d8cd"
+                "reference": "119b07de9c592a0286cd584d6e961903ba096d8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/79d9c8bd94801bffbf9b56964f6438762da6d8cd",
-                "reference": "79d9c8bd94801bffbf9b56964f6438762da6d8cd",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/119b07de9c592a0286cd584d6e961903ba096d8a",
+                "reference": "119b07de9c592a0286cd584d6e961903ba096d8a",
                 "shasum": ""
             },
             "require-dev": {
@@ -347,7 +351,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -380,7 +384,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2013-08-10 11:11:45"
+            "time": "2014-01-01 21:15:36"
         },
         {
             "name": "symfony/class-loader",

@@ -1,10 +1,10 @@
 <?php
 
 use Behat\Behat\Context\ContextInterface;
-use Behat\Behat\Exception\PendingException;
-use Behat\Behat\Snippet\Context\SnippetsFriendlyInterface;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
+
+use \Behat\Behat\Context\Context;
 
 use org\bovigo\vfs\vfsStream;
 
@@ -13,9 +13,8 @@ use Symfony\Component\Console\Tester\ApplicationTester;
 /**
  * Context class for all features
  */
-class FeatureContext implements ContextInterface, SnippetsFriendlyInterface
+class FeatureContext implements Context
 {
-
     /**
      * @var ApplicationTester
      */
