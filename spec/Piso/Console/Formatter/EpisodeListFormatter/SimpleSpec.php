@@ -5,6 +5,7 @@ namespace spec\Piso\Console\Formatter\EpisodeListFormatter;
 use PhpSpec\ObjectBehavior;
 use Piso\Console\Formatter\EpisodeListFormatter;
 use Piso\Index\Episode;
+use Piso\Index\EpisodeList;
 use Prophecy\Argument;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -29,17 +30,19 @@ class SimpleSpec extends ObjectBehavior
         $output->writeln('No episodes found')->shouldHaveBeenCalled();
     }
 
-    function it_outputs_the_season_and_episode_number_for_one_episode(OutputInterface $output, Episode $episode)
+    function it_outputs_the_season_and_episode_number_for_one_episode(OutputInterface $output, Episode $episode, EpisodeList $episodes)
     {
         $episode->getSeason()->willReturn(1);
         $episode->getNumber()->willReturn(2);
 
-        $this->episodeList($output, 'someshow', [$episode]);
+        $episodes->getEpisodes()->willReturn([$episode]);
+
+        $this->episodeList($output, 'someshow', $episodes);
 
         $output->writeln('Season 1: Episode 2')->shouldHaveBeenCalled();
     }
 
-    function it_outputs_multiple_rows_for_different_seasons(OutputInterface $output, Episode $episode, Episode $episode2)
+    function it_outputs_multiple_rows_for_different_seasons(OutputInterface $output, Episode $episode, Episode $episode2, EpisodeList $episodes)
     {
         $episode->getSeason()->willReturn(1);
         $episode->getNumber()->willReturn(2);
@@ -47,13 +50,15 @@ class SimpleSpec extends ObjectBehavior
         $episode2->getSeason()->willReturn(2);
         $episode2->getNumber()->willReturn(3);
 
-        $this->episodeList($output, 'someshow', [$episode, $episode2]);
+        $episodes->getEpisodes()->willReturn([$episode, $episode2]);
+
+        $this->episodeList($output, 'someshow', $episodes);
 
         $output->writeln('Season 1: Episode 2')->shouldHaveBeenCalled();
         $output->writeln('Season 2: Episode 3')->shouldHaveBeenCalled();
     }
 
-    function it_comma_separates_nonadjacent_episodes_inside_the_same_season(OutputInterface $output, Episode $episode, Episode $episode2)
+    function it_comma_separates_nonadjacent_episodes_inside_the_same_season(OutputInterface $output, Episode $episode, Episode $episode2, EpisodeList $episodes)
     {
         $episode->getSeason()->willReturn(1);
         $episode->getNumber()->willReturn(2);
@@ -61,7 +66,9 @@ class SimpleSpec extends ObjectBehavior
         $episode2->getSeason()->willReturn(1);
         $episode2->getNumber()->willReturn(5);
 
-        $this->episodeList($output, 'someshow', [$episode, $episode2]);
+        $episodes->getEpisodes()->willReturn([$episode, $episode2]);
+
+        $this->episodeList($output, 'someshow', $episodes);
 
         $output->writeln('Season 1: Episodes 2,5')->shouldHaveBeenCalled();
     }

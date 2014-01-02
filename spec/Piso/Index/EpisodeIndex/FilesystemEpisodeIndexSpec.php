@@ -7,6 +7,7 @@ use Piso\Config\ShowConfig;
 use Piso\Config\ShowsConfig;
 use Piso\Exception\ConfigException;
 use Piso\Index\Episode;
+use Piso\Index\EpisodeList;
 use Piso\Index\ShowsIndex;
 use Piso\Util\FileLister;
 use Prophecy\Argument;
@@ -58,9 +59,10 @@ class FilesystemEpisodeIndexSpec extends ObjectBehavior
     {
         $showConfig->getLibraryPath()->willReturn(false);
 
-        $shows = $this->getEpisodesForShow('show');
+        $episodes = $this->getEpisodesForShow('show');
 
-        $shows->shouldEqual([]);
+        $episodes->shouldHaveType(EpisodeList::class);
+        $episodes->getEpisodes()->shouldEqual([]);
     }
 
     function it_lists_the_files_in_the_library_location(ShowConfig $showConfig, FileLister $lister)
@@ -78,7 +80,8 @@ class FilesystemEpisodeIndexSpec extends ObjectBehavior
 
         $episodes = $this->getEpisodesForShow('show');
 
-        $episodes->shouldEqual([]);
+        $episodes->shouldHaveType(EpisodeList::class);
+        $episodes->getEpisodes()->shouldEqual([]);
     }
 
     function it_returns_one_episode_if_one_file_is_present(ShowConfig $showConfig, FileLister $lister, SplFileInfo $file)
@@ -89,7 +92,7 @@ class FilesystemEpisodeIndexSpec extends ObjectBehavior
 
         $episodes = $this->getEpisodesForShow('show');
 
-        $episodes->shouldHaveCount(1);
-        $episodes[0]->shouldHaveType(Episode::class);
+        $episodes->getEpisodes()->shouldHaveCount(1);
+        $episodes->getEpisodes()[0]->shouldHaveType(Episode::class);
     }
 }

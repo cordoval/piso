@@ -4,6 +4,7 @@ namespace Piso\Console\Formatter\EpisodeListFormatter;
 
 use Piso\Console\Formatter\EpisodeListFormatter;
 
+use Piso\Index\EpisodeList;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -38,11 +39,11 @@ class Simple implements EpisodeListFormatter
      *
      * @param OutputInterface $output
      * @param string $show
-     * @param array $episodes Episode objects
+     * @param EpisodeList $episodes Episode objects
      */
-    public function episodeList(OutputInterface $output, $show, array $episodes)
+    public function episodeList(OutputInterface $output, $show, EpisodeList $episodes)
     {
-        $seasons = $this->getEpisodeNumbersBySeason($episodes);
+        $seasons = $this->getEpisodeNumbersBySeason($episodes->getEpisodes());
         foreach ($seasons as $season => $episodeNumbers) {
             $episodeList = join(',', $episodeNumbers);
             $output->writeln(sprintf('Season %d: Episode%s %s', $season, count($episodeNumbers)>1?'s':'', $episodeList));

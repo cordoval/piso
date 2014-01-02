@@ -5,6 +5,7 @@ namespace Piso\Index\EpisodeIndex;
 use Piso\Config\ShowsConfig;
 use Piso\Index\Episode\FileSystemEpisode;
 use Piso\Index\EpisodeIndex;
+use Piso\Index\EpisodeList;
 use Piso\Index\ShowsIndex;
 use Piso\Util\FileLister;
 
@@ -37,7 +38,7 @@ class FilesystemEpisodeIndex implements EpisodeIndex
      * Get all of the episodes in a particular show
      *
      * @param string $showName
-     * @return array
+     * @return EpisodeList
      */
     public function getEpisodesForShow($showName)
     {
@@ -46,9 +47,9 @@ class FilesystemEpisodeIndex implements EpisodeIndex
 
         if ($path = $showConfig->getLibraryPath()) {
             $files = $this->fileLister->getFilesInLocation($path);
-            return array_map(function ($file) { return new FileSystemEpisode($file); }, $files);
+            $episodes = array_map(function ($file) { return new FileSystemEpisode($file); }, $files);
         }
 
-        return $episodes;
+        return new EpisodeList($episodes);
     }
 }

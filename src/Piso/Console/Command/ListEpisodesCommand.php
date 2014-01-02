@@ -25,6 +25,11 @@ class ListEpisodesCommand extends Command
      */
     private $episodeListFormatter;
 
+    /**
+     * @param string $name
+     * @param EpisodeIndex $episodeIndex
+     * @param EpisodeListFormatter $formatter
+     */
     public function __construct($name, EpisodeIndex $episodeIndex, EpisodeListFormatter $formatter)
     {
         $this->episodeIndex = $episodeIndex;
@@ -51,7 +56,8 @@ class ListEpisodesCommand extends Command
         $show = $input->getArgument('show');
 
         try {
-            if ($episodes = $this->episodeIndex->getEpisodesForShow($show)) {
+            $episodes = $this->episodeIndex->getEpisodesForShow($show);
+            if (count($episodes->getEpisodes()) > 0) {
                 $this->episodeListFormatter->episodeList($output, $show, $episodes);
             } else {
                 $this->episodeListFormatter->noEpisodes($output, $show);

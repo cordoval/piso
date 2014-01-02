@@ -16,7 +16,7 @@ Feature: Listing the episodes of a show
      When I list the episodes for the show "Soap Opera"
      Then The output should contain "No episodes found"
 
-  Scenario: Simple season range on disk
+  Scenario: Files on disk
     Given I have a configuration file containing
           """
           shows:
